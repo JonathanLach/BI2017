@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="11/9/2017 11:35:42 AM"
@@ -11,8 +11,8 @@
   DTS:LocaleID="2060"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{3180D244-88C2-4B29-8DF0-171451323620}">
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{0D6C3C29-42A7-4C61-A618-EB75388224E4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">6</DTS:Property>
   <DTS:ConnectionManagers>
@@ -248,33 +248,6 @@
         </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 5]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{55C99BC5-102D-46BF-AF72-4A9E3A8B0193}"
-      DTS:ObjectName="Flat File Connection Manager 5">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="2060"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\etu31944\Desktop\RepoBI-master\BI2017\dates.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="7"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Date"
-              DTS:DTSID="{678BABBC-67F4-462E-8C25-B58458686AF6}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
@@ -307,13 +280,31 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\Modification dates\Derived Column.Inputs[Derived Column Input].Columns[Date]"
-                      cachedDataType="date"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
                       cachedName="Date"
+                      lineageId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].Columns[Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Modification dates\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayFrenchName]"
+                      dataType="empty"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].Columns[Date]"
-                      truncationRowDisposition="FailComponent"
-                      usageType="readWrite">
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayFrenchName]"
+                      name="DayFrenchName"
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
@@ -327,18 +318,140 @@
                           expressionType="Notify"
                           name="FriendlyExpression"></property>
                       </properties>
-                    </inputColumn>
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Modification dates\Derived Column.Inputs[Derived Column Input]">
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayEnglishName]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayEnglishName]"
+                      name="DayEnglishName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[MonthFrenchName]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[MonthFrenchName]"
+                      name="MonthFrenchName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[MonthEnglishName]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[MonthEnglishName]"
+                      name="MonthEnglishName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[WeekNumber]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[WeekNumber]"
+                      name="WeekNumber"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayOfWeek]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayOfWeek]"
+                      name="DayOfWeek"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayOfYear]"
+                      dataType="empty"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Modification dates\Derived Column.Outputs[Derived Column Output].Columns[DayOfYear]"
+                      name="DayOfYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"></property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"></property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -367,6 +480,38 @@
               </outputs>
             </component>
             <component
+              refId="Package\Modification dates\Flat File Destination"
+              componentClassID="{8DA75FED-1B7C-407D-B2AD-2B24209CCCA4}"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Flat File Destination"
+              name="Flat File Destination">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Modification dates\Flat File Destination.Connections[FlatFileConnection]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Modification dates\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True" />
+                </input>
+              </inputs>
+            </component>
+            <component
               refId="Package\Modification dates\Flat File Source"
               componentClassID="{D23FD76B-F51D-420F-BBCB-19CBF6AC1AB4}"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -388,8 +533,8 @@
               <connections>
                 <connection
                   refId="Package\Modification dates\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 5]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 5]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 4]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 4]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -399,10 +544,12 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].Columns[Date]"
-                      dataType="date"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      length="50"
                       lineageId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].Columns[Date]"
                       name="Date"
                       truncationRowDisposition="FailComponent">
@@ -422,7 +569,9 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Modification dates\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Date]"
-                      dataType="date"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
                       name="Date" />
                   </externalMetadataColumns>
                 </output>
@@ -492,39 +641,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154,42"
-          Id="Package\Modification dates\Derived Column"
-          TopLeft="543.5,187.5" />
-        <NodeLayout
           Size="151,42"
           Id="Package\Modification dates\Flat File Source"
-          TopLeft="246.5,63.5" />
+          TopLeft="165.5,64.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Modification dates\Derived Column"
+          TopLeft="536.5,167.5" />
         <EdgeLayout
           Id="Package\Modification dates.Paths[Flat File Source Output]"
-          TopLeft="322,105.5">
+          TopLeft="241,106.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="298.5,82"
+              EndConnector="372.5,61"
               Start="0,0"
-              End="298.5,74.5">
+              End="372.5,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,37" />
+                    End="0,26.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,37"
-                    Point2="0,41"
-                    Point3="4,41" />
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
                   <mssgle:LineSegment
-                    End="294.5,41" />
+                    End="368.5,30.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="294.5,41"
-                    Point2="298.5,41"
-                    Point3="298.5,45" />
+                    Point1="368.5,30.5"
+                    Point2="372.5,30.5"
+                    Point3="372.5,34.5" />
                   <mssgle:LineSegment
-                    End="298.5,74.5" />
+                    End="372.5,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -533,6 +682,10 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Modification dates\Flat File Destination"
+          TopLeft="642.5,282.5" />
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
